@@ -29,8 +29,99 @@ body {
     MAIN CONTENT
 **************************************************/
 .main-content {
-    background-color: 
-    #F0F0F0;
+    background-color: #FFF;
+    margin-top: 60px;
+    border-top: 1px solid #000;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+}
+
+/* PLAYER */
+.player {
+    grid-column: 1/2;
+    margin-top: 30px;
+    text-align: center;
+    align-items: center;
+}
+
+.player > h1 {
+    margin-top: 40px;
+    font-weight: 300;
+}
+
+.player > h2 {
+    font-weight: 300;
+}
+
+.player > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.player > ul > li {
+    padding: 10px;
+}
+
+.sprite {
+    display: inline-block; 
+    vertical-align: middle;
+    background-image: url(../img/prs.jpg); 
+    background-position: left center; 
+    background-repeat: no-repeat;
+}
+
+.sprite.paper {
+    background-position: 0 0; 
+    width: 50px; 
+    height: 72px;
+}
+
+.sprite.rock {
+    background-position: -50px 0; 
+    width: 50px; 
+    height: 72px;
+}
+
+.sprite.scissors {
+    background-position: -100px 0; 
+    width: 50px; 
+    height: 72px;
+    margin-top: 20px;
+}
+
+#papel {
+    background-position: 0 0;
+}
+
+.score {
+    grid-column: 2/4;
+    text-align: center;
+}
+
+.computer {
+    grid-column: 4/-1;
+    margin-top: 30px;
+    text-align: center;
+    align-items: center;
+}
+
+.computer > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.computer > h1 {
+    margin-top: 40px;
+    margin-bottom: 67px;
+    font-weight: 300;
+}
+
+.computer > ul > li {
+    padding: 10px;
 }
 
 /**************************************************
