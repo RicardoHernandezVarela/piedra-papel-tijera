@@ -66,19 +66,19 @@ body {
     background-repeat: no-repeat;
 }
 
-.sprite.paper {
+.sprite.papel {
     background-position: 0 0; 
     width: 50px; 
     height: 72px;
 }
 
-.sprite.rock {
+.sprite.piedra {
     background-position: -50px 0; 
     width: 50px; 
     height: 72px;
 }
 
-.sprite.scissors {
+.sprite.tijeras {
     background-position: -100px 0; 
     width: 50px; 
     height: 72px;
@@ -111,6 +111,12 @@ body {
 .player-choice {
     grid-column: 1/2;
     border-right: 1px solid #000;
+    justify-content: center;
+}
+
+.played > h5 {
+    font-weight: 200;
+    text-align: center;
 }
 
 .computer-choice {
@@ -167,8 +173,8 @@ body {
         margin-top: 20px;
     }
 
-    .computer > h1 {
-        margin-bottom: 43px;
+    .computer > ul {
+        margin-top: 43px;
     }
 
     .score > span {
@@ -181,6 +187,25 @@ body {
 
     .player-choice, .computer-choice {
         margin-top: 40px;
+    }
+
+    .played {
+        margin-top: 85px;
+    }
+    
+    .played > span {
+        transform: scale(1.2);
+    }
+    
+    .played > h5 {
+        margin-top: 30px;
+        font-size: 1.1em;
+    }
+}
+
+@media(min-width:425px) {
+    .computer > ul {
+        margin-top: 31px;
     }
 }
 
@@ -205,15 +230,15 @@ body {
     }
 
     .main-content h2 {
-        font-size: 1.5em;
+        font-size: 1.3em;
     }
 
     .player, .computer {
         margin-top: 30px;
     }
 
-    .computer > h1 {
-        margin-bottom: 68px;
+    .computer > ul {
+        margin-top: 63px;
     }
 
     .score > span {
@@ -226,5 +251,18 @@ body {
 
     .player-choice, .computer-choice {
         margin-top: 70px;
+    }
+
+    .played {
+        margin-top: 150px;
+    }
+    
+    .played > span {
+        transform: scale(1.4);
+    }
+    
+    .played > h5 {
+        margin-top: 50px;
+        font-size: 2em;
     }
 }

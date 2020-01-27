@@ -17,15 +17,15 @@
             <div class="player">
                 <h1>Tu</h1>
                 <h2>Selecciona una opción</h2>
-                <ul>
+                <ul id="player-options">
                     <li>
-                        <span class="sprite paper"></span>
+                        <span class="sprite piedra" id="papel"></span>
                     </li>
                     <li>
-                        <span class="sprite rock"></span>
+                        <span class="sprite papel" id="piedra"></span>
                     </li>
                     <li>
-                        <span class="sprite scissors"></span>
+                        <span class="sprite tijeras" id="tijeras"></span>
                     </li>
                 </ul>
             </div>
@@ -38,16 +38,19 @@
                 </div>
 
                 <div class="player-choice">
-                    <span class="sprite paper"></span>
-                    <h5>Papel</h5>
+                    <div class="played" id="player-selection">
+
+                    </div>
                 </div>
                 <div class="computer-choice">
-                    pc
+                    <div class="played">
+                        <span class="sprite rock"></span>
+                        <h5>Piedra</h5>
+                    </div>
                 </div>
             </div>
             <div class="computer">
                 <h1>Computadora</h1>
-
                 <ul>
                     <li>
                         <span class="sprite paper"></span>
