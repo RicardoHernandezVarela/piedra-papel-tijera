@@ -19,10 +19,10 @@
                 <h2>Selecciona una opción</h2>
                 <ul id="player-options">
                     <li>
-                        <span class="sprite piedra" id="papel"></span>
+                        <span class="sprite papel" id="papel"></span>
                     </li>
                     <li>
-                        <span class="sprite papel" id="piedra"></span>
+                        <span class="sprite piedra" id="piedra"></span>
                     </li>
                     <li>
                         <span class="sprite tijeras" id="tijeras"></span>
@@ -31,12 +31,14 @@
             </div>
             <div class="game-board">
                 <div class="score">
-                    <span>0</span>
+                    <span id="player-score">0</span>
                     <span>-</span>
-                    <span>0</span>
+                    <span id="computer-score">0</span>
                     <h5>marcador</h5>
                 </div>
 
+                <span id="winner"></span>
+                
                 <div class="player-choice">
                     <div class="played" id="player-selection">
 

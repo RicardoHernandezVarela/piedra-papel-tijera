@@ -3,24 +3,32 @@ const playerOptions = document.querySelector('#player-options');
 const playerSelection = document.querySelector('#player-selection');
 const computerSelection = document.querySelector('#computer-selection');
 
+const gameWinner = document.querySelector('#winner');
+const playerScore = document.querySelector('#player-score');
+const computerScore = document.querySelector('#computer-score');
+
+let playerWins = 0;
+let computerWins = 0;
+
+const PAPEL = "papel";
+const PIEDRA = "piedra";
+const TIJERAS = "tijeras";
+
 /* GAME OPTIONS */
 const gameOptions = [
     {
-        choice: "papel"
+        choice: PAPEL
     },
     {
-        choice: "piedra"
+        choice: PIEDRA
     },
     {
-        choice: "tijeras"
+        choice: TIJERAS
     }
 ]
 
 /* TURNS */
 let playerCanPlay = true;
-
-/* GAME CONDITIONS */
-
 
 /* GENERATE MOVE */
 const generateMove = (choice) => {
@@ -35,20 +43,76 @@ const generateMove = (choice) => {
 const computerChoice = () => {
     selected = Math.floor(Math.random()*3);
     computerMove = gameOptions[selected].choice;
-    computerSelection.innerHTML = generateMove(computerMove);
+
+    return computerMove;
 }
 
+/* DISPLAY WINNER */
+const displayWinner = (winner) => {
+    playerSelection.style.display = 'none';
+    computerSelection.style.display = 'none';
+    gameWinner.style.display = 'block';
+    gameWinner.innerText = winner;
+}
 
-/* USER CHOICE */
+const displayMove = () => {
+    playerSelection.style.display = 'block';
+    computerSelection.style.display = 'block';
+    gameWinner.style.display = 'none';
+}
+
+/* GAME CONDITIONS - check FOR WINNER */
+const checkArrayForWinner = (player, computer) => {
+    let checkArray = [player, computer];
+    let winningChoice = '';
+
+    if (checkArray.indexOf(PAPEL) !== -1 && checkArray.indexOf(PIEDRA) !== -1) {
+        winningChoice = PAPEL;
+    } else if (checkArray.indexOf(PAPEL) !== -1 && checkArray.indexOf(TIJERAS) !== -1) {
+        winningChoice = TIJERAS;
+    } else if (checkArray.indexOf(PIEDRA) !== -1 && checkArray.indexOf(TIJERAS) !== -1) {
+        winningChoice = PIEDRA;
+    } else {
+        winningChoice = 'Empate';
+    }
+
+    /* CHOOSE WINNER */
+    if (player === winningChoice) {
+        setTimeout(() => displayWinner('Ganaste'), 800);
+        displayMove();
+        playerWins += 1;
+
+        playerScore.innerText = playerWins
+    } else if (computer === winningChoice) {
+        setTimeout(() => displayWinner('Perdiste'), 800);
+        displayMove();
+        computerWins += 1;
+
+        computerScore.innerText = computerWins;
+    } else {
+        setTimeout(() => displayWinner(winningChoice), 800);
+        displayMove();
+    }
+}
+
+/* GAME FLOW */
 playerOptions.addEventListener('click', (event) => {
-    let playerChoice = event.target.id;
-    
+
+    let playerMove = event.target.id;
+    let computerMove;
+
     /* PLAYER MOVE */
-    playerSelection.innerHTML = generateMove(playerChoice);
+    playerSelection.innerHTML = generateMove(playerMove);
     playerCanPlay = false;
 
     /* COMPUTER MOVE */
-    if(!playerCanPlay) {
-        computerChoice();
+    if(!playerCanPlay && playerMove !== '') {
+        computerMove = computerChoice();
+        computerSelection.innerHTML = generateMove(computerMove);
+    } else {
+        computerSelection.innerHTML = "<span></span>";
     }
+
+    /* SELECT WINNER */
+    checkArrayForWinner(playerMove, computerMove)
 })

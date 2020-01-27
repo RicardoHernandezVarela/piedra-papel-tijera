@@ -30,7 +30,6 @@ body {
 **************************************************/
 .main-content {
     background-color: #FFF;
-
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-content: center;
@@ -85,10 +84,6 @@ body {
     margin-top: 20px;
 }
 
-#papel {
-    background-position: 0 0;
-}
-
 /* GAME BOARD */
 .game-board {
     grid-column: 2/4;
@@ -112,6 +107,10 @@ body {
     grid-column: 1/2;
     border-right: 1px solid #000;
     justify-content: center;
+}
+
+.played .tijeras {
+    margin-top: 0;
 }
 
 .played > h5 {
@@ -162,7 +161,7 @@ body {
     .main-content h1 {
         font-size: 0.8em;
         font-weight: 600;
-        margin-top: 38px;
+        margin-top: 70px;
     }
 
     .main-content h2 {
