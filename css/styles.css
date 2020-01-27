@@ -30,7 +30,7 @@ body {
 **************************************************/
 .main-content {
     background-color: #FFF;
-    margin-top: 60px;
+    margin-top: 40px;
     border-top: 1px solid #000;
 
     display: grid;
@@ -65,6 +65,7 @@ body {
     padding: 10px;
 }
 
+/* ICONS */
 .sprite {
     display: inline-block; 
     vertical-align: middle;
@@ -96,11 +97,34 @@ body {
     background-position: 0 0;
 }
 
-.score {
+/* GAME BOARD */
+.game-board {
     grid-column: 2/4;
     text-align: center;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 50px auto;
 }
 
+.score {
+    grid-column: 1/-1;
+}
+
+.score > h5 {
+    margin-top: 0;
+}
+
+.player-choice {
+    grid-column: 1/2;
+    border-right: 1px solid #000;
+}
+
+.computer-choice {
+    grid-column: 2/-1;
+}
+
+/* COMPUTER */
 .computer {
     grid-column: 4/-1;
     margin-top: 30px;
@@ -124,8 +148,9 @@ body {
     padding: 10px;
 }
 
+
 /**************************************************
-    MAIN CONTENT
+    OTROS DISPOSITIVOS
 **************************************************/
 @media(min-width:320px) {
     .header > h1 {
