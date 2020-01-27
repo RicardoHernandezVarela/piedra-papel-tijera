@@ -30,8 +30,6 @@ body {
 **************************************************/
 .main-content {
     background-color: #FFF;
-    margin-top: 40px;
-    border-top: 1px solid #000;
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -41,14 +39,8 @@ body {
 /* PLAYER */
 .player {
     grid-column: 1/2;
-    margin-top: 30px;
     text-align: center;
     align-items: center;
-}
-
-.player > h1 {
-    margin-top: 40px;
-    font-weight: 300;
 }
 
 .player > h2 {
@@ -113,6 +105,7 @@ body {
 
 .score > h5 {
     margin-top: 0;
+    font-weight: 200;
 }
 
 .player-choice {
@@ -138,12 +131,6 @@ body {
     padding: 0;
 }
 
-.computer > h1 {
-    margin-top: 40px;
-    margin-bottom: 67px;
-    font-weight: 300;
-}
-
 .computer > ul > li {
     padding: 10px;
 }
@@ -153,15 +140,91 @@ body {
     OTROS DISPOSITIVOS
 **************************************************/
 @media(min-width:320px) {
+    .container {
+        grid-template-rows: 60px auto;
+    }
+
     .header > h1 {
         font-size: 2.2em;
-        padding-top: 20px;
+        padding-top: 10px;
+    }
+
+    .main-content {
+        margin-top: 10px;
+    }
+
+    .main-content h1 {
+        font-size: 0.8em;
+        font-weight: 600;
+        margin-top: 38px;
+    }
+
+    .main-content h2 {
+        font-size: 0.7em;
+    }
+
+    .player, .computer {
+        margin-top: 20px;
+    }
+
+    .computer > h1 {
+        margin-bottom: 43px;
+    }
+
+    .score > span {
+        font-size: 3em;
+    }
+    
+    .score > h5 {
+        font-size: 1em;
+    }
+
+    .player-choice, .computer-choice {
+        margin-top: 40px;
     }
 }
 
 @media(min-width:768px) {
+    .container {
+        grid-template-rows: 80px auto;
+    }
+
     .header > h1 {
         font-size: 4em;
         padding-top: 0;
+    }
+
+    .main-content {
+        margin-top: 40px;
+    }
+
+    .main-content h1 {
+        font-size: 2em;
+        font-weight: 300;
+        margin-top: 90px;
+    }
+
+    .main-content h2 {
+        font-size: 1.5em;
+    }
+
+    .player, .computer {
+        margin-top: 30px;
+    }
+
+    .computer > h1 {
+        margin-bottom: 68px;
+    }
+
+    .score > span {
+        font-size: 4em;
+    }
+    
+    .score > h5 {
+        font-size: 1.4em;
+    }
+
+    .player-choice, .computer-choice {
+        margin-top: 70px;
     }
 }
