@@ -3,6 +3,9 @@ const playerOptions = document.querySelector('#player-options');
 const playerSelection = document.querySelector('#player-selection');
 const computerSelection = document.querySelector('#computer-selection');
 
+const selectMessage = document.querySelector('#select-message');
+const playerSection = document.querySelector('.player-choice');
+
 const gameWinner = document.querySelector('#winner');
 const playerScore = document.querySelector('#player-score');
 const computerScore = document.querySelector('#computer-score');
@@ -32,6 +35,9 @@ let playerCanPlay = true;
 
 /* GENERATE MOVE */
 const generateMove = (choice) => {
+    playerSelection.style.display = 'block';
+    computerSelection.style.display = 'block';
+
     let move = `
         <span class="sprite ${choice}"></span>
         <h5>${choice}</h5>
@@ -48,21 +54,40 @@ const computerChoice = () => {
 }
 
 /* DISPLAY WINNER */
-const displayWinner = (winner) => {
-    playerSelection.style.display = 'none';
-    computerSelection.style.display = 'none';
-    gameWinner.style.display = 'block';
-    gameWinner.innerText = winner;
-}
+const cleanPreviousChoice = (node) => {
+    while (node.hasChildNodes()) {
+        node.removeChild(node.firstChild);
+     }
+};
+
+const displayWinner = (winner, playerS, computerS) => {
+
+    setTimeout(() => {
+        playerSection.style.borderRight = "thick solid #FFF";
+        playerSelection.style.display = 'none';
+        computerSelection.style.display = 'none';
+        gameWinner.style.display = 'block';
+        gameWinner.innerText = winner;
+
+        playerScore.innerText = playerS;
+        computerScore.innerText = computerS;
+
+    }, 1000);
+};
 
 const displayMove = () => {
-    playerSelection.style.display = 'block';
-    computerSelection.style.display = 'block';
-    gameWinner.style.display = 'none';
-}
+    setTimeout(() => {
+        gameWinner.style.display = 'none';
+
+        playerSection.style.borderRight = "1px solid #000";
+        selectMessage.style.color = '#000';
+        playerSelection.style.display = 'none';
+    }, 2000)
+};
 
 /* GAME CONDITIONS - check FOR WINNER */
 const checkArrayForWinner = (player, computer) => {
+
     let checkArray = [player, computer];
     let winningChoice = '';
 
@@ -78,25 +103,23 @@ const checkArrayForWinner = (player, computer) => {
 
     /* CHOOSE WINNER */
     if (player === winningChoice) {
-        setTimeout(() => displayWinner('Ganaste'), 800);
-        displayMove();
         playerWins += 1;
+        displayWinner('Ganaste', playerWins, computerWins);
 
-        playerScore.innerText = playerWins
     } else if (computer === winningChoice) {
-        setTimeout(() => displayWinner('Perdiste'), 800);
-        displayMove();
         computerWins += 1;
+        displayWinner('Perdiste', playerWins, computerWins);
 
-        computerScore.innerText = computerWins;
     } else {
-        setTimeout(() => displayWinner(winningChoice), 800);
-        displayMove();
+        displayWinner('Empate', playerWins, computerWins);
     }
+
+    displayMove();
 }
 
 /* GAME FLOW */
 playerOptions.addEventListener('click', (event) => {
+    selectMessage.style.color = '#FFF';
 
     let playerMove = event.target.id;
     let computerMove;
@@ -114,5 +137,5 @@ playerOptions.addEventListener('click', (event) => {
     }
 
     /* SELECT WINNER */
-    checkArrayForWinner(playerMove, computerMove)
-})
+    checkArrayForWinner(playerMove, computerMove);
+});

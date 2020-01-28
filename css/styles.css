@@ -65,6 +65,10 @@ body {
     background-repeat: no-repeat;
 }
 
+.sprite:hover {
+    cursor: pointer;
+}
+
 .sprite.papel {
     background-position: 0 0; 
     width: 50px; 
@@ -92,6 +96,14 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 50px auto;
+}
+
+#winner {
+    grid-column: 1/-1;
+    display: none;
+    margin-top: 60%;
+    font-size: 2em;
+    z-index: 1;
 }
 
 .score {
