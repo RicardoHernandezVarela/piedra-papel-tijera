@@ -28,10 +28,7 @@ const gameOptions = [
     {
         choice: TIJERAS
     }
-]
-
-/* TURNS */
-//let playerCanPlay = true;
+];
 
 /* GENERATE MOVE */
 const generateMove = (choice) => {
@@ -43,7 +40,7 @@ const generateMove = (choice) => {
         <h5>${choice}</h5>
     `;
     return move;
-}
+};
 
 /* COMPUTER CHOICE*/
 const computerChoice = () => {
@@ -51,35 +48,36 @@ const computerChoice = () => {
     computerMove = gameOptions[selected].choice;
 
     return computerMove;
-}
+};
 
 /* DISPLAY WINNER */
-const displayWinner = (winner, playerS, computerS) => {
+const displayWinner = (winner, playerPoints, computerPoints) => {
 
     setTimeout(() => {
         playerSection.style.borderRight = "1px solid #FFF";
         playerSelection.style.display = 'none';
         computerSelection.style.display = 'none';
+        
         gameWinner.style.display = 'block';
         gameWinner.innerText = winner;
 
-        playerScore.innerText = playerS;
-        computerScore.innerText = computerS;
+        playerScore.innerText = playerPoints;
+        computerScore.innerText = computerPoints;
 
     }, 1000);
+    
 };
 
-const displayMove = () => {
+const resetBoard = () => {
     setTimeout(() => {
         gameWinner.style.display = 'none';
-
         playerSection.style.borderRight = "1px solid #000";
         selectMessage.style.color = '#000';
-    }, 2000)
+    }, 2000);
 };
 
 /* GAME CONDITIONS - check FOR WINNER */
-const checkArrayForWinner = (player, computer) => {
+const checkForWinner = (player, computer) => {
 
     let checkArray = [player, computer];
     let winningChoice = '';
@@ -104,31 +102,30 @@ const checkArrayForWinner = (player, computer) => {
         displayWinner('Perdiste', playerWins, computerWins);
 
     } else {
-        displayWinner('Empate', playerWins, computerWins);
+        displayWinner(winningChoice, playerWins, computerWins);
     }
 
-    displayMove();
-}
+    resetBoard();
+};
 
 /* GAME FLOW */
 playerOptions.addEventListener('click', (event) => {
-    selectMessage.style.color = '#FFF';
 
-    let playerMove = event.target.id;
-    let computerMove;
+    if (event.target.tagName === 'SPAN') {
 
-    /* PLAYER MOVE */
-    playerSelection.innerHTML = generateMove(playerMove);
-    //playerCanPlay = false;
+        selectMessage.style.color = '#FFF';
 
-    /* COMPUTER MOVE */
-    if(playerMove !== '') {
+        let playerMove = event.target.id;
+        let computerMove;
+
+        /* PLAYER MOVE */
+        playerSelection.innerHTML = generateMove(playerMove);
+
+        /* COMPUTER MOVE */
         computerMove = computerChoice();
         computerSelection.innerHTML = generateMove(computerMove);
-    } else {
-        computerSelection.innerHTML = "<span></span>";
-    }
 
-    /* SELECT WINNER */
-    checkArrayForWinner(playerMove, computerMove);
+        /* SELECT WINNER */
+        checkForWinner(playerMove, computerMove);
+    }
 });
