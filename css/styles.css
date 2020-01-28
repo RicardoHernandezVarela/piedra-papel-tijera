@@ -101,9 +101,7 @@ body {
 #winner {
     grid-column: 1/-1;
     display: none;
-    margin-top: 60%;
     font-size: 2em;
-    z-index: 1;
 }
 
 .score {
@@ -178,10 +176,17 @@ body {
 
     .main-content h2 {
         font-size: 0.7em;
+        margin-left: 10px;
+        text-align: center;
     }
 
     .player, .computer {
         margin-top: 20px;
+    }
+
+    .computer > h1 {
+        text-align: center;
+        margin-right: 5px;
     }
 
     .computer > ul {
@@ -211,6 +216,10 @@ body {
     .played > h5 {
         margin-top: 30px;
         font-size: 1.1em;
+    }
+
+    #winner {
+        margin-top: 80%;
     }
 }
 
@@ -275,5 +284,9 @@ body {
     .played > h5 {
         margin-top: 50px;
         font-size: 2em;
+    }
+
+    #winner {
+        margin-top: 35%;
     }
 }
