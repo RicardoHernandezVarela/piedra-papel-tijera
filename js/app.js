@@ -31,7 +31,7 @@ const gameOptions = [
 ]
 
 /* TURNS */
-let playerCanPlay = true;
+//let playerCanPlay = true;
 
 /* GENERATE MOVE */
 const generateMove = (choice) => {
@@ -54,16 +54,10 @@ const computerChoice = () => {
 }
 
 /* DISPLAY WINNER */
-const cleanPreviousChoice = (node) => {
-    while (node.hasChildNodes()) {
-        node.removeChild(node.firstChild);
-     }
-};
-
 const displayWinner = (winner, playerS, computerS) => {
 
     setTimeout(() => {
-        playerSection.style.borderRight = "thick solid #FFF";
+        playerSection.style.borderRight = "1px solid #FFF";
         playerSelection.style.display = 'none';
         computerSelection.style.display = 'none';
         gameWinner.style.display = 'block';
@@ -81,7 +75,6 @@ const displayMove = () => {
 
         playerSection.style.borderRight = "1px solid #000";
         selectMessage.style.color = '#000';
-        playerSelection.style.display = 'none';
     }, 2000)
 };
 
@@ -126,10 +119,10 @@ playerOptions.addEventListener('click', (event) => {
 
     /* PLAYER MOVE */
     playerSelection.innerHTML = generateMove(playerMove);
-    playerCanPlay = false;
+    //playerCanPlay = false;
 
     /* COMPUTER MOVE */
-    if(!playerCanPlay && playerMove !== '') {
+    if(playerMove !== '') {
         computerMove = computerChoice();
         computerSelection.innerHTML = generateMove(computerMove);
     } else {
